@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from selenium.webdriver.firefox.webdriver import WebDriver
 import unittest
+from selenium.webdriver.firefox.webdriver import WebDriver
+import unittest
 from group import Group
 
 def is_alert_present(wd):
@@ -51,11 +53,9 @@ class test_add_group(unittest.TestCase):
         # submit group creation
         wd.find_element_by_name("submit").click()
 
-
     def return_to_groups_page(self, wd):
         # return to groups page
         wd.find_element_by_link_text("group page").click()
-
 
     def logout(self, wd):
          # logout
@@ -66,7 +66,7 @@ class test_add_group(unittest.TestCase):
         self.open_home_page(wd)
         self.Login(wd, username="admin", password="secret")
         self.open_group_page(wd)
-        self.create_group(wd, name="New_Group_2", header="dsfdsfsfvzsd", footer="szdvfdxvzfdvd")
+        self.create_group(wd, Group(name="gvgc", header="dsfdsfsfvzsd", footer="szdvfdxvzfdvd"))
         self.return_to_groups_page(wd)
         self.logout(wd)
 

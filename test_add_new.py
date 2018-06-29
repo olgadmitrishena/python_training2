@@ -20,6 +20,7 @@ class test_add_new_contact(unittest.TestCase):
         wd.get("http://localhost/addressbook/")
 
     def login(self, wd, username, password):
+        self.open_home_page(wd
         # login
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
@@ -31,7 +32,7 @@ class test_add_new_contact(unittest.TestCase):
 
 
     def create_new_contact(self, wd, group):
-
+        self.open_add_new_page(wd)
         # init new contact creation
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
@@ -87,6 +88,7 @@ class test_add_new_contact(unittest.TestCase):
         wd.find_element_by_name("notes").click()
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(group.Notes)
+        self.return_to_home_page(wd)
 
 
         # submit new contact creation
@@ -104,20 +106,14 @@ class test_add_new_contact(unittest.TestCase):
 
     def test_add_new_contact(self):
         wd = self.wd
-        self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
-        self.open_add_new_page(wd)
         self.create_new_contact(wd, new(Ferst_name="sadasd", Middle_name="dsadad", Last_name="adfdzf", Nickname="sdfdc", Title="dvfv", Company="sfdsef", Address="sdffsd", Home="sdvsd", Mobile="cdscvsd", Work="svsvc", Fax="svscsc", E_mail="svsfc", E_mail2="svsc", E_mail3="svvs", Homepage="svsvcs", Secondotory_Address="svsvs", Secondotory_Home="svsvs", Notes="svsvsv"))
-        self.return_to_home_page(wd)
         self.logout(wd)
 
     def test_add_new_empty_contact(self):
         wd = self.wd
-        self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
-        self.open_add_new_page(wd)
         self.create_new_contact(wd, new(Ferst_name="", Middle_name="", Last_name="", Nickname="", Title="", Company="", Address="", Home="", Mobile="", Work="", Fax="", E_mail="", E_mail2="", E_mail3="", Homepage="", Secondotory_Address="", Secondotory_Home="", Notes=""))
-        self.return_to_home_page(wd)
         self.logout(wd)
 
     def tearDown(self):

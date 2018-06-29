@@ -15,13 +15,13 @@ class test_add_new_contact(unittest.TestCase):
         self.wd = WebDriver(capabilities={"marionette": False})
         self.wd.implicitly_wait(60)
 
-    def open_home_page(self, wd):
-        # open home page
+    def open_home_page(self):
+        wd = self.wd
         wd.get("http://localhost/addressbook/")
 
-    def login(self, wd, username, password):
-        self.open_home_page(wd
-        # login
+    def login(self, username, password):
+        wd = self.wd
+        self.open_home_page()
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(username)
@@ -31,8 +31,9 @@ class test_add_new_contact(unittest.TestCase):
         wd.find_element_by_css_selector("input[type=\"submit\"]").click()
 
 
-    def create_new_contact(self, wd, group):
-        self.open_add_new_page(wd)
+    def create_new_contact(self, group):
+        wd = self.wd
+        self.open_add_new_page()
         # init new contact creation
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
@@ -88,33 +89,32 @@ class test_add_new_contact(unittest.TestCase):
         wd.find_element_by_name("notes").click()
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(group.Notes)
-        self.return_to_home_page(wd)
-
-
         # submit new contact creation
         wd.find_element_by_name("submit").click()
+        self.return_to_home_page()
 
-    def open_add_new_page(self, wd):
+    def open_add_new_page(self):
+        wd = self.wd
         # add new
         wd.find_element_by_link_text("add new").click()
 
-    def return_to_home_page(self, wd):
+    def return_to_home_page(self):
+        wd = self.wd
         wd.find_element_by_link_text("home page").click()
 
-    def logout(self, wd):
+    def logout(self):
+        wd = self.wd
         wd.find_element_by_link_text("Logout").click()
 
     def test_add_new_contact(self):
-        wd = self.wd
-        self.login(wd, username="admin", password="secret")
-        self.create_new_contact(wd, new(Ferst_name="sadasd", Middle_name="dsadad", Last_name="adfdzf", Nickname="sdfdc", Title="dvfv", Company="sfdsef", Address="sdffsd", Home="sdvsd", Mobile="cdscvsd", Work="svsvc", Fax="svscsc", E_mail="svsfc", E_mail2="svsc", E_mail3="svvs", Homepage="svsvcs", Secondotory_Address="svsvs", Secondotory_Home="svsvs", Notes="svsvsv"))
-        self.logout(wd)
+        self.login(username="admin", password="secret")
+        self.create_new_contact(new(Ferst_name="sadasd", Middle_name="dsadad", Last_name="adfdzf", Nickname="sdfdc", Title="dvfv", Company="sfdsef", Address="sdffsd", Home="sdvsd", Mobile="cdscvsd", Work="svsvc", Fax="svscsc", E_mail="svsfc", E_mail2="svsc", E_mail3="svvs", Homepage="svsvcs", Secondotory_Address="svsvs", Secondotory_Home="svsvs", Notes="svsvsv"))
+        self.logout()
 
     def test_add_new_empty_contact(self):
-        wd = self.wd
-        self.login(wd, username="admin", password="secret")
-        self.create_new_contact(wd, new(Ferst_name="", Middle_name="", Last_name="", Nickname="", Title="", Company="", Address="", Home="", Mobile="", Work="", Fax="", E_mail="", E_mail2="", E_mail3="", Homepage="", Secondotory_Address="", Secondotory_Home="", Notes=""))
-        self.logout(wd)
+        self.login(username="admin", password="secret")
+        self.create_new_contact(new(Ferst_name="", Middle_name="", Last_name="", Nickname="", Title="", Company="", Address="", Home="", Mobile="", Work="", Fax="", E_mail="", E_mail2="", E_mail3="", Homepage="", Secondotory_Address="", Secondotory_Home="", Notes=""))
+        self.logout()
 
     def tearDown(self):
         self.wd.quit()

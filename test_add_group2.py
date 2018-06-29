@@ -46,6 +46,7 @@ class test_add_group(unittest.TestCase):
         wd.find_element_by_name("group_footer").send_keys(groups.footer)
         # submit group creation
         wd.find_element_by_name("submit").click()
+        self.return_to_group_page()
 
     def open_groups_page(self):
         wd = self.wd
@@ -62,13 +63,11 @@ class test_add_group(unittest.TestCase):
     def test_add_groups(self):
         self.Login(username="admin", password="secret")
         self.create_group(Group(name="gvgc", header="dsfdsfsfvzsd", footer="szdvfdxvzfdvd"))
-        self.return_to_group_page()
         self.logout()
 
     def test_add_empty_group(self):
         self.Login(username="admin", password="secret")
         self.create_group(Group(name="", header="", footer=""))
-        self.return_to_group_page()
         self.logout()
 
     def tearDown(self):

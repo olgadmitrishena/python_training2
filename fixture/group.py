@@ -43,63 +43,39 @@ class GroupHelper:
         wd = self.app.wd
         self.open_add_new_page()
         # init new contact creation
-        wd.find_element_by_name("firstname").click()
-        wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys(group.Ferst_name)
-        wd.find_element_by_name("middlename").click()
-        wd.find_element_by_name("middlename").clear()
-        wd.find_element_by_name("middlename").send_keys(group.Middle_name)
-        wd.find_element_by_name("lastname").click()
-        wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys(group.Last_name)
-        wd.find_element_by_name("nickname").click()
-        wd.find_element_by_name("nickname").clear()
-        wd.find_element_by_name("nickname").send_keys(group.Nickname)
-        wd.find_element_by_name("title").click()
-        wd.find_element_by_name("title").clear()
-        wd.find_element_by_name("title").send_keys(group.Title)
-        wd.find_element_by_name("address").click()
-        wd.find_element_by_name("company").click()
-        wd.find_element_by_name("company").clear()
-        wd.find_element_by_name("company").send_keys(group.Company)
-        wd.find_element_by_name("address").click()
-        wd.find_element_by_name("address").clear()
-        wd.find_element_by_name("address").send_keys(group.Address)
-        wd.find_element_by_name("home").click()
-        wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys(group.Home)
-        wd.find_element_by_name("mobile").click()
-        wd.find_element_by_name("mobile").clear()
-        wd.find_element_by_name("mobile").send_keys(group.Mobile)
-        wd.find_element_by_name("work").click()
-        wd.find_element_by_name("work").clear()
-        wd.find_element_by_name("work").send_keys(group.Work)
-        wd.find_element_by_name("fax").click()
-        wd.find_element_by_name("fax").clear()
-        wd.find_element_by_name("fax").send_keys(group.Fax)
-        wd.find_element_by_name("email").click()
-        wd.find_element_by_name("email").clear()
-        wd.find_element_by_name("email").send_keys(group.E_mail)
-        wd.find_element_by_name("email2").click()
-        wd.find_element_by_name("email2").clear()
-        wd.find_element_by_name("email2").send_keys(group.E_mail2)
-        wd.find_element_by_name("email3").click()
-        wd.find_element_by_name("email3").clear()
-        wd.find_element_by_name("email3").send_keys(group.E_mail3)
-        wd.find_element_by_name("homepage").click()
-        wd.find_element_by_name("homepage").send_keys(group.Homepage)
-        wd.find_element_by_name("address2").click()
-        wd.find_element_by_name("address2").clear()
-        wd.find_element_by_name("address2").send_keys(group.Secondotory_Address)
-        wd.find_element_by_name("home").click()
-        wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys(group.Secondotory_Home)
-        wd.find_element_by_name("notes").click()
-        wd.find_element_by_name("notes").clear()
-        wd.find_element_by_name("notes").send_keys(group.Notes)
+        self.fill_contact_form(group)
         # submit new contact creation
         wd.find_element_by_name("submit").click()
         self.return_to_home_page()
+
+    def fill_contact_form(self, group):
+        wd = self.app.wd
+        self.change_contact_field_value("firstname", group.First_name)
+        self.change_contact_field_value("middlename", group.Middle_name)
+        self.change_contact_field_value("lastname", group.Last_name)
+        self.change_contact_field_value("nickname", group.Nickname)
+        self.change_contact_field_value("title", group.Title)
+        self.change_contact_field_value("company", group.Company)
+        self.change_contact_field_value("address", group.Address)
+        self.change_contact_field_value("home", group.Home)
+        self.change_contact_field_value("mobile", group.Mobile)
+        self.change_contact_field_value("work", group.Work)
+        self.change_contact_field_value("fax", group.Fax)
+        self.change_contact_field_value("email", group.E_mail)
+        self.change_contact_field_value("email2", group.E_mail2)
+        self.change_contact_field_value("email3", group.E_mail3)
+        self.change_contact_field_value("homepage", group.Homepage)
+        self.change_contact_field_value("address2", group.Secondotory_Address)
+        self.change_contact_field_value("home", group.Secondotory_Home)
+        self.change_contact_field_value("notes", group.Notes)
+
+
+    def change_contact_field_value(self, field_firstname, text):
+        wd = self.app.wd
+        if text is not None:
+            wd.find_element_by_name(field_firstname).click()
+            wd.find_element_by_name(field_firstname).clear()
+            wd.find_element_by_name(field_firstname).send_keys(text)
 
     def open_add_new_page(self):
         wd = self.app.wd
@@ -118,14 +94,6 @@ class GroupHelper:
         wd = self.app.wd
         wd.find_element_by_name("selected[]").click()
 
-    def delete_first_contact(self):
-        wd = self.app.wd
-        # select first contact
-        wd.find_element_by_name("selected[]").click()
-        # submit deletion
-        wd.find_element_by_xpath(' // input[ @ value = "Delete"]').click()
-        wd.switch_to_alert().accept()
-
     def modify_first_group(self, new_group_data):
         wd = self.app.wd
         self.open_groups_page()
@@ -137,6 +105,30 @@ class GroupHelper:
         # submit modification
         wd.find_element_by_name("update").click()
         self.return_to_group_page()
+
+    def delete_first_contact(self):
+        wd = self.app.wd
+        self.select_first_contact()
+        # submit deletion
+        wd.find_element_by_xpath(' // input[ @ value = "Delete"]').click()
+        wd.switch_to_alert().accept()
+
+    def select_first_contact(self):
+        wd = self.app.wd
+        wd.find_element_by_name("selected[]").click()
+
+
+    def modify_first_contact(self, new_group_data):
+        wd = self.app.wd
+        self.select_first_contact()
+        # open modification form
+        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
+        # fill contact form
+        self.fill_contact_form(new_group_data)
+        # submit modification
+        wd.find_element_by_name("update").click()
+
+
 
     def return_to_home_page(self):
         wd = self.app.wd

@@ -1,7 +1,7 @@
 class new:
 
-    def __init__(self, Ferst_name, Middle_name, Last_name, Nickname, Title, Company, Address, Home, Mobile, Work, Fax,E_mail, E_mail2, E_mail3, Homepage, Secondotory_Address, Secondotory_Home, Notes):
-        self.Ferst_name = Ferst_name
+    def __init__(self, First_name="None", Middle_name="None", Last_name="None", Nickname="None", Title="None", Company="None", Address="None", Home="None", Mobile="None", Work="None", Fax="None",E_mail="None", E_mail2="None", E_mail3="None", Homepage="None", Secondotory_Address="None", Secondotory_Home="None", Notes="None"):
+        self.First_name = First_name
         self.Middle_name = Middle_name
         self.Last_name = Last_name
         self.Nickname = Nickname

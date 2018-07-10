@@ -138,5 +138,12 @@ class GroupHelper:
     def count(self):
         wd = self.app.wd
         self.open_groups_page()
-        return (wd.find_elements_by_name("selected[]"))
+        return len(wd.find_elements_by_name("selected[]"))
+
+    def count(self):
+        wd = self.app.wd
+        self.open_add_new_page()
+        return len(wd.find_elements_by_name("selected[]"))
+
+
 

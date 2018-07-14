@@ -5,6 +5,7 @@ class GroupHelper:
     def __init__(self, app):
         self.app = app
 
+
     def open_groups_page(self):
         wd = self.app.wd
         wd.find_element_by_link_text("groups").click()
@@ -25,6 +26,7 @@ class GroupHelper:
             wd.find_element_by_name(field_name).click()
             wd.find_element_by_name(field_name).clear()
             wd.find_element_by_name(field_name).send_keys(text)
+
 
     def fill_group_form(self, groups):
         wd = self.app.wd
@@ -67,6 +69,7 @@ class GroupHelper:
         self.change_contact_field_value("home", group.Secondotory_Home)
         self.change_contact_field_value("notes", group.Notes)
 
+
     def change_contact_field_value(self, field_firstname, text):
         wd = self.app.wd
         if text is not None:
@@ -107,12 +110,13 @@ class GroupHelper:
         wd = self.app.wd
         self.select_first_contact()
         # submit deletion
-        wd.find_element_by_xpath('//input[@value = "Delete"]').click()
+        wd.find_element_by_xpath(' // input[ @ value = "Delete"]').click()
         wd.switch_to_alert().accept()
 
     def select_first_contact(self):
         wd = self.app.wd
         wd.find_element_by_name("selected[]").click()
+
 
     def modify_first_contact(self, new_group_data):
         wd = self.app.wd
@@ -123,6 +127,8 @@ class GroupHelper:
         self.fill_contact_form(new_group_data)
         # submit modification
         wd.find_element_by_name("update").click()
+
+
 
     def return_to_home_page(self):
         wd = self.app.wd

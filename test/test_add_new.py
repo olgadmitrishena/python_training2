@@ -9,3 +9,4 @@ def test_add_new_empty_contact(app):
     app.group.create_contact(new(First_name="", Middle_name="", Last_name="", Nickname="", Title="", Company="", Address="", Home="", Mobile="", Work="", Fax="", E_mail="", E_mail2="", E_mail3="", Homepage="", Secondotory_Address="", Secondotory_Home="", Notes=""))
 
 
+

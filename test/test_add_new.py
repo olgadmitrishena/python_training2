@@ -1,12 +1,20 @@
 # -*- coding: utf-8 -*-
-from model.contact import new
 
-def test_add_new_contact(app):
-    app.contact.create(new(First_name="sadasd", Middle_name="dsadad", Last_name="adfdzf", Nickname="sdfdc", Title="dvfv", Company="sfdsef", Address="sdffsd", Home="sdvsd", Mobile="cdscvsd", Work="svsvc", Fax="svscsc", E_mail="svsfc", E_mail2="svsc", E_mail3="svvs", Homepage="svsvcs", Secondotory_Address="svsvs", Secondotory_Home="svsvs", Notes="svsvsv"))
+from model.contact import Contact
+
+def test_add_contact(app):
+    app.contact.create(Contact(first_name="First name", middle_name="Middle name", last_name="Last name", title="Title", company="Company", adress="adress", telephone="Telephone",
+                                     mobile="Mobile", work="Work", fax="Fax", e_mail="E-mail", mailtwo="E-mail2", mailthree="E-mail3", homepage="Homepage", adress2="adress2",
+                                     homeadress="Homeadress", notestwo="notes2", ayear="1995", byear="1995"))
+
+def test_add_empty_contact(app):
+    app.contact.create_empty(Contact(first_name="", middle_name="", last_name="", title="", company="", adress="",
+                                     telephone="",
+                                     mobile="", work="", fax="", e_mail="", mailtwo="", mailthree="", homepage="",
+                                     adress2="",
+                                     homeadress="", notestwo="", ayear="", byear=""))
 
 
-def test_add_new_empty_contact(app):
-    app.contact.create(new(First_name="", Middle_name="", Last_name="", Nickname="", Title="", Company="", Address="", Home="", Mobile="", Work="", Fax="", E_mail="", E_mail2="", E_mail3="", Homepage="", Secondotory_Address="", Secondotory_Home="", Notes=""))
 
 
 

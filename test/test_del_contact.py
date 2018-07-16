@@ -1,6 +1,6 @@
 from model.contact import new
 
 def test_delete_first_contact(app):
-    if app.group.count() == 0:
-        app.group.create_contact(new(First_name="test"))
-    app.group.delete_first_contact()
+    if app.contact.count() == 0:
+        app.contact.create_contact(new(First_name="test"))
+    app.contact.delete_first_contact()

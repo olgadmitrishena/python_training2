@@ -23,7 +23,7 @@ class ContactHelper:
         wd.find_element_by_xpath("//div[@id='content']/form/select[4]//option[2]").click()
         self.contact_creation()
         self.return_to_home_page()
-        self.group_cashe = None
+        self.contact_cache = None
 
 
     def contact_creation(self):
@@ -48,6 +48,7 @@ class ContactHelper:
         # contact_creation
         self.contact_creation()
         self.return_to_home_page()
+        self.contact_cache = None
 
 
     def fill_contact_form(self, contact):
@@ -85,6 +86,7 @@ class ContactHelper:
         # update group creation
         wd.find_element_by_name("update").click()
         self.return_to_home_page()
+        self.contact_cache = None
 
 
     def click_for_edit_first_contact(self):
@@ -99,7 +101,7 @@ class ContactHelper:
         # submit deletion
         wd.find_element_by_xpath('//input[@value = "Delete"]').click()
         wd.switch_to_alert().accept()
-        self.group_cashe = None
+        self.contact_cache = None
 
 
     def modify_first_contact(self, new_contact_data):
@@ -111,7 +113,7 @@ class ContactHelper:
         # submit modification
         wd.find_element_by_name("update").click()
         self.return_to_home_page()
-        self.group_cashe = None
+        self.contact_cache = None
 
 
     def change_field_value(self, field_name, text):
@@ -125,19 +127,19 @@ class ContactHelper:
         wd = self.app.wd
         return len(wd.find_elements_by_name("selected[]"))
 
-    contact_cashe = None
+    contact_cache = None
 
     def get_contact_list(self):
-        if self.contact_cashe is None:
+        if self.contact_cache is None:
             wd = self.app.wd
-            self.contact_cashe = []
+            self.contact_cache = []
             for element in wd.find_elements_by_name("entry"):
                 row = element.find_elements_by_css_selector("td")
                 id = row[0].find_element_by_name("selected[]").get_attribute("value")
-                lastname = row[1].text
+                last_name = row[1].text
                 first_name = row[2].text
-                self.contact_cashe.append(Contact(id=id, last_name=lastname, first_name=first_name))
-        return list(self.contact_cashe)
+                self.contact_cache.append(Contact(id=id, last_name=last_name, first_name=first_name))
+        return list(self.contact_cache)
 
 
 

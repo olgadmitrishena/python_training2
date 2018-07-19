@@ -1,3 +1,6 @@
+from model.contact import Contact
+
+
 class ContactHelper:
 
 
@@ -115,7 +118,22 @@ class ContactHelper:
             wd.find_element_by_name(field_name).clear()
             wd.find_element_by_name(field_name).send_keys(text)
 
-
     def count(self):
         wd = self.app.wd
         return len(wd.find_elements_by_name("selected[]"))
+
+    def get_contact_list(self):
+        wd = self.app.wd
+        contacts = []
+        for element in wd.find_elements_by_name("entry"):
+            row = element.find_elements_by_css_selector("td")
+            id = row[0].find_element_by_name("selected[]").get_attribute("value")
+            lastname = row[1].text
+            first_name = row[2].text
+            contacts.append(Contact(id=id, last_name=lastname, first_name=first_name))
+        return contacts
+
+
+
+
+

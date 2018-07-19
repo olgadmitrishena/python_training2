@@ -2,17 +2,25 @@
 
 from model.contact import Contact
 
-def test_add_contact(app):
-    app.contact.create(Contact(first_name="First name", middle_name="Middle name", last_name="Last name", title="Title", company="Company", adress="adress", telephone="Telephone",
-                                     mobile="Mobile", work="Work", fax="Fax", e_mail="E-mail", mailtwo="E-mail2", mailthree="E-mail3", homepage="Homepage", adress2="adress2",
-                                     homeadress="Homeadress", notestwo="notes2", ayear="1995", byear="1995"))
+
+def test_add_new_contact(app):
+    old_contact_list = app.contact.get_contact_list()
+    new_contact = Contact(first_name="1", middle_name="2", last_name="3")
+    app.contact.create(new_contact)
+    new_contact_list = app.contact.get_contact_list()
+    assert len(old_contact_list) + 1 == len(new_contact_list)
+    old_contact_list.append(new_contact)
+    assert sorted(old_contact_list, key=Contact.id_max) == sorted(new_contact_list, key=Contact.id_max)
 
 def test_add_empty_contact(app):
-    app.contact.create_empty(Contact(first_name="", middle_name="", last_name="", title="", company="", adress="",
-                                     telephone="",
-                                     mobile="", work="", fax="", e_mail="", mailtwo="", mailthree="", homepage="",
-                                     adress2="",
-                                     homeadress="", notestwo="", ayear="", byear=""))
+    old_contact_list = app.contact.get_contact_list()
+    new_contact = Contact(first_name="", middle_name="", last_name="")
+    app.contact.create(new_contact)
+    new_contact_list = app.contact.get_contact_list()
+    assert len(old_contact_list) + 1 == len(new_contact_list)
+    old_contact_list.append(new_contact)
+    assert sorted(old_contact_list, key=Contact.id_max) == sorted(new_contact_list, key=Contact.id_max)
+
 
 
 

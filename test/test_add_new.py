@@ -13,6 +13,10 @@ def test_add_new_contact(app):
     old_contact_list.append(contact_list)
     assert sorted(old_contact_list, key=Contact.id_max) == sorted(new_contact_list, key=Contact.id_max)
 
+
+
+
+
 #def test_add_empty_contact(app):
 #    old_contact_list = app.contact.get_contact_list()
 #    new_contact = Contact(first_name="", middle_name="", last_name="")

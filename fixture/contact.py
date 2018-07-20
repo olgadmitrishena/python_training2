@@ -153,7 +153,6 @@ class ContactHelper:
                 self.contact_cache.append(Contact(id=id, last_name=last_name, first_name=first_name))
         return list(self.contact_cache)
 
-
     def _open_contact_to_edit_by_index(self, index):
         wd = self.app.wd
         row = wd.find.elements_by_name("entry")[index]

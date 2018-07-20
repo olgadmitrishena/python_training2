@@ -145,13 +145,26 @@ class ContactHelper:
         if self.contact_cache is None:
             wd = self.app.wd
             self.contact_cache = []
-            for element in wd.find_elements_by_name("entry"):
-                row = element.find_elements_by_css_selector("td")
-                id = row[0].find_element_by_name("selected[]").get_attribute("value")
-                last_name = row[1].text
-                first_name = row[2].text
+            for row in wd.find_elements_by_name("entry"):
+                cells = row.find_elements_by_tag_name("td")
+                id = cells[0].find_element_by_tag_name("input").get_attribute("value")
+                last_name = cells[1].text
+                first_name = cells[2].text
                 self.contact_cache.append(Contact(id=id, last_name=last_name, first_name=first_name))
         return list(self.contact_cache)
+
+
+    def _open_contact_to_edit_by_index(self, index):
+        wd = self.app.wd
+        row = wd.find.elements_by_name("entry")[index]
+        cell = row.find_elements_by_tag_name("td")[7]
+        cell.find_element_by_tag_name("a").click()
+
+    def _open_contact_view_by_index(self, index):
+        wd = self.app.wd
+        row = wd.find.elements_by_name("entry")[index]
+        cell = row.find_elements_by_tag_name("td")[6]
+        cell.find_element_by_tag_name("a").click()
 
 
 

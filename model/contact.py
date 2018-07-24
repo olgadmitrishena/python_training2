@@ -2,27 +2,36 @@ from sys import maxsize
 
 class Contact:
 
-    def __init__(self, first_name=None, middle_name=None, last_name=None, title=None, company=None, adress=None, telephone=None, mobile=None, work=None,
-                       fax=None, e_mail=None, mailtwo=None, mailthree=None, homepage=None, adress2=None, homeadress=None, notestwo=None, byear=None, ayear=None, id=None):
+    def __init__(self, first_name=None, last_name=None, id=None,
+                       middle_name=None, title=None, company=None, adress=None,
+                       homephone=None, phone2=None, mobile=None, workphone=None,
+                       fax=None, e_mail=None, e_mail2=None, e_mail3=None,mailtwo=None, mailthree=None, homepage=None, address2=None,
+                       homeadress=None, notestwo=None, byear=None, ayear=None, all_phones_from_home_page=None,
+                       all_emails_from_home_page=None):
         self.first_name=first_name
         self.middle_name=middle_name
         self.last_name=last_name
         self.title=title
         self.company=company
         self.adress=adress
-        self.telephone=telephone
+        self.homephone=homephone
         self.mobile=mobile
-        self.work=work
+        self.workphone=workphone
+        self.phone2=phone2
         self.fax=fax
         self.e_mail=e_mail
+        self.e_mail2 = e_mail2
+        self.e_mail3 = e_mail3
         self.mailtwo=mailtwo
         self.mailthree=mailthree
         self.homepage=homepage
-        self.adress2=adress2
+        self.address2=address2
         self.homeadress=homeadress
         self.notestwo=notestwo
         self.byear=byear
         self.ayear=ayear
+        self.all_phones_from_home_page=all_phones_from_home_page
+        self.all_emails_from_home_page=all_emails_from_home_page
         self.id = id
 
     def __repr__(self):

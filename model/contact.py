@@ -2,15 +2,14 @@ from sys import maxsize
 
 class Contact:
 
-    def __init__(self, first_name=None, last_name=None, id=None,
-                       middle_name=None, title=None, company=None, adress=None,
-                       homephone=None, phone2=None, mobile=None, workphone=None,
-                       fax=None, e_mail=None, e_mail2=None, e_mail3=None,mailtwo=None, mailthree=None, homepage=None, address2=None,
+    def __init__(self, firstname=None, lastname=None, id=None, middlename=None, title=None, company=None, adress=None,
+                       homephone=None, phone2=None, mobile=None, workphone=None, fax=None, email=None, email2=None,
+                       email3=None,mailtwo=None, mailthree=None, homepage=None, address2=None,
                        homeadress=None, notestwo=None, byear=None, ayear=None, all_phones_from_home_page=None,
-                       all_emails_from_home_page=None):
-        self.first_name=first_name
-        self.middle_name=middle_name
-        self.last_name=last_name
+                       all_emails_from_home_page=None, all_phones_from_edit_page=None, all_emails_from_edit_page=None, all_phones_from_view_page=None, all_emails_from_view_page=None):
+        self.firstname=firstname
+        self.middlename=middlename
+        self.lastname=lastname
         self.title=title
         self.company=company
         self.adress=adress
@@ -19,11 +18,9 @@ class Contact:
         self.workphone=workphone
         self.phone2=phone2
         self.fax=fax
-        self.e_mail=e_mail
-        self.e_mail2 = e_mail2
-        self.e_mail3 = e_mail3
-        self.mailtwo=mailtwo
-        self.mailthree=mailthree
+        self.email=email
+        self.email2 = email2
+        self.email3 = email3
         self.homepage=homepage
         self.address2=address2
         self.homeadress=homeadress
@@ -32,14 +29,18 @@ class Contact:
         self.ayear=ayear
         self.all_phones_from_home_page=all_phones_from_home_page
         self.all_emails_from_home_page=all_emails_from_home_page
+        self.all_phones_from_edit_page = all_phones_from_edit_page
+        self.all_emails_from_edit_page = all_emails_from_edit_page
+
+
         self.id = id
 
     def __repr__(self):
-        return "%s:%s" % (self.id, self.first_name)
+        return "%s:%s;%s" % (self.id, self.firstname, self.lastname)
 
 
     def __eq__(self, other):
-        return (self.id is None or other.id is None or self.id == other.id) and self.first_name == other.first_name
+        return (self.id is None or other.id is None or self.id == other.id) and self.firstname == other.firstname
 
     def id_max(self):
         if self.id:

@@ -31,8 +31,6 @@ class Contact:
         self.all_emails_from_home_page=all_emails_from_home_page
         self.all_phones_from_edit_page = all_phones_from_edit_page
         self.all_emails_from_edit_page = all_emails_from_edit_page
-
-
         self.id = id
 
     def __repr__(self):

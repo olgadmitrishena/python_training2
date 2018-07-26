@@ -6,7 +6,7 @@ import random
 import string
 
 def random_string(prefix, maxlen):
-    simbols = string.ascii_letters + string.digits + string.punctuation + " "*10
+    simbols = string.ascii_letters + string.digits + string.punctuation + ""*10
     return prefix + "".join([random.choice(simbols) for i in range(random.randrange(maxlen))])
 
 testdata = [Contact(firstname="", middlename="", lastname="", title="", company="", adress="", workphone="",
@@ -23,7 +23,7 @@ def test_add_new_contact(app, contact):
     old_contact_list = app.contact.get_contact_list()
     app.contact.create(contact)
     new_contact_list = app.contact.get_contact_list()
-    assert len(old_contact_list) + 1 == app.contact.count()
+    assert len(old_contact_list) + 1 == len(new_contact_list)
     old_contact_list.append(contact)
     assert sorted(old_contact_list, key=Contact.id_max) == sorted(new_contact_list, key=Contact.id_max)
 

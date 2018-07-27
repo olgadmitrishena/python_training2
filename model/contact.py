@@ -4,9 +4,9 @@ class Contact:
 
     def __init__(self, firstname=None, lastname=None, id=None, middlename=None, title=None, company=None, adress=None,
                        homephone=None, phone2=None, mobile=None, workphone=None, fax=None, email=None, email2=None,
-                       email3=None,mailtwo=None, mailthree=None, homepage=None, address2=None,
+                       email3=None, homepage=None, address2=None,
                        homeadress=None, notestwo=None, byear=None, ayear=None, all_phones_from_home_page=None,
-                       all_emails_from_home_page=None, all_phones_from_edit_page=None, all_emails_from_edit_page=None, all_phones_from_view_page=None, all_emails_from_view_page=None):
+                       all_emails_from_home_page=None, all_phones_from_edit_page=None, all_emails_from_edit_page=None):
         self.firstname=firstname
         self.middlename=middlename
         self.lastname=lastname

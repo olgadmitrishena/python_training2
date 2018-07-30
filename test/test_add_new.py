@@ -22,5 +22,3 @@ def test_add_new_contact(app, contact):
 
 
 
-
-

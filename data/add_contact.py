@@ -1,4 +1,3 @@
-
 from model.contact import Contact
 import random
 import string

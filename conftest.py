@@ -41,10 +41,6 @@ def db(request):
     return dbfixture
 
 
-@pytest.fixture
-def check_ui(request):
-    return request.config.getoption("--check_ui")
-
 @pytest.fixture(scope="session", autouse=True)
 def stop(request):
     def fin():
@@ -52,6 +48,10 @@ def stop(request):
         fixture.destroy()
     request.addfinalizer(fin)
     return fixture
+
+@pytest.fixture
+def check_ui(request):
+    return request.config.getoption("--check_ui")
 
 
 def pytest_addoption(parser):

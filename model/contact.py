@@ -5,8 +5,8 @@ class Contact:
     def __init__(self, firstname=None, lastname=None, id=None, middlename=None, title=None, company=None, adress=None,
                        homephone=None, phone2=None, mobile=None, workphone=None, fax=None, email=None, email2=None,
                        email3=None, homepage=None, address2=None, notes=None,
-                       homeadress=None, notestwo=None, byear=None, ayear=None, all_phones_from_home_page=None,
-                       all_emails_from_home_page=None, all_phones_from_edit_page=None, all_emails_from_edit_page=None):
+                       homeadress=None, notestwo=None, byear=None, ayear=None, all_phones_from_homepage=None,
+                       all_emails_from_homepage=None, all_phones_from_editpage=None, all_emails_from_editpage=None):
         self.firstname=firstname
         self.middlename=middlename
         self.lastname=lastname
@@ -28,10 +28,10 @@ class Contact:
         self.byear=byear
         self.ayear=ayear
         self.notes=notes
-        self.all_phones_from_home_page=all_phones_from_home_page
-        self.all_emails_from_home_page=all_emails_from_home_page
-        self.all_phones_from_edit_page = all_phones_from_edit_page
-        self.all_emails_from_edit_page = all_emails_from_edit_page
+        self.all_phones_from_homepage=all_phones_from_homepage
+        self.all_emails_from_homepage=all_emails_from_homepage
+        self.all_phones_from_editpage = all_phones_from_editpage
+        self.all_emails_from_editpage = all_emails_from_editpage
         self.id = id
 
     def __repr__(self):

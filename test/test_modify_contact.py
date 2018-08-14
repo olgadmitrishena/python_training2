@@ -8,7 +8,7 @@ def test_modify_some_contact(app):
     if app.contact.count() == 0:
         app.contact.create(Contact(firstname="First name", middlename="Middle name", lastname="Last name", title="Title", company="Company", adress="adress", telephone="Telephone",
                                    mobile="Mobile", work="Work", fax="Fax", email="email", email2="email2", email3="email3", homepage="Homepage", adress2="adress2",
-                                   homeadress="Homeadress", notestwo="notes2", ayear="1995", byear="1995"))
+                                   homeadress="Homeadress", notestwo="notes2", ayear="byear", byear="byear"))
     old_contacts = app.contact.get_contact_list()
     index = randrange(len(old_contacts))
     contact = Contact(firstname="New First name")
